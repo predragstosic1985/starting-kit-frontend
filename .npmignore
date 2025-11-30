@@ -1,0 +1,15 @@
+src/
+specs/
+.gitignore
+.eslintrc*
+.prettierrc*
+tsconfig*.json
+vite.config.ts
+vitest.config.ts
+*.config.*
+public/
+.kilocode/
+.specify/
+*.md
+!README.md
+!dist/

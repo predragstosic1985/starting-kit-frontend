@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const login = async (username: string, password: string): Promise<boolean> => {
         // Demo authentication - in production, call API
-        if (username === 'demo' && password === 'password123') {
+        if (username === 'demo' && password === 'password') {
             const demoUser: User = {
                 id: '1',
                 username: 'demo',
