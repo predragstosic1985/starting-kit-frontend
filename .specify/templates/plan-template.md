@@ -31,7 +31,14 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Must use TypeScript latest stable version
+- Must use React 19+ version
+- Must use Yarn 4+ for package management (no npm or pnpm)
+- Must use Material UI as primary styling framework
+- Optional: SCSS and Tailwind for additional styling
+- All components must be fully responsive and mobile-ready
+- Design must be modern, sleek, and visually appealing
+- Components must be modular and reusable for POC purposes
 
 ## Project Structure
 

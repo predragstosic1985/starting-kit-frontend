@@ -1,50 +1,40 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- Sync Impact Report
+Version change: none → 1.0.0
+List of modified principles: N/A (new constitution)
+Added sections: Core Principles (5), Technology Constraints, Development Standards, Governance
+Removed sections: N/A
+Templates requiring updates: none (templates are generic placeholders)
+Follow-up TODOs: none
+-->
+# Starting Kit Frontend Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Modern Tech Stack
+The application must use TypeScript latest stable version, React 19+ version, and Yarn 4+ for package management. Do not use npm or pnpm. This ensures cutting-edge development with reliable dependency management.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Styling Framework
+Primary styling with Material UI for consistent, accessible components. Optional use of SCSS and Tailwind for additional customization and flexibility in design implementation.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Responsive Design
+All components and layouts must be fully responsive and mobile-ready. Every feature must work seamlessly across desktop, tablet, and mobile devices.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Sleek Aesthetics
+The design should be modern, sleek, and visually appealing to stand out. Focus on clean interfaces, intuitive user experience, and professional appearance.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Reusability
+As a starting kit for POCs, components should be modular, reusable, and easily configurable. Enable rapid prototyping and adaptation for various proof-of-concept projects.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technology Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+Technology stack requirements include TypeScript latest stable, React 19+, Yarn 4+, and Material UI as primary styling. SCSS and Tailwind are optional for enhanced styling capabilities. All implementations must prioritize performance, accessibility, and cross-browser compatibility.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Standards
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+Code must follow TypeScript best practices, React hooks patterns, and Material UI guidelines. Ensure all components include responsive breakpoints and mobile-first design. Conduct regular design reviews to maintain sleek aesthetics. Document reusable components for easy integration in future POCs.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Constitution supersedes all other practices. Amendments require documentation, approval, and migration plan. Version follows semantic versioning: MAJOR for breaking changes, MINOR for new features, PATCH for fixes. All PRs must verify compliance with principles. Complexity must be justified.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-11-30 | **Last Amended**: 2025-11-30
