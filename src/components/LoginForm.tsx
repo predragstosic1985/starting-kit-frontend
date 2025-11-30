@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Button, Box, Alert } from '@mui/material'
+import { TextField, Button, Box, Alert, Typography } from '@mui/material'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -83,9 +83,45 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 disabled={loading}
+                aria-describedby={loading ? 'login-progress' : undefined}
             >
-                {loading ? 'Signing In...' : 'Sign In'}
+                {loading ? (
+                    <>
+                        <Box
+                            component="span"
+                            sx={{
+                                display: 'inline-block',
+                                width: 16,
+                                height: 16,
+                                border: '2px solid rgba(255, 255, 255, 0.3)',
+                                borderRadius: '50%',
+                                borderTopColor: 'white',
+                                animation: 'spin 1s ease-in-out infinite',
+                                mr: 1,
+                                '@keyframes spin': {
+                                    to: { transform: 'rotate(360deg)' },
+                                },
+                            }}
+                            aria-hidden="true"
+                        />
+                        Signing In...
+                    </>
+                ) : (
+                    'Sign In'
+                )}
             </Button>
+            {loading && (
+                <Box
+                    id="login-progress"
+                    sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}
+                    role="status"
+                    aria-live="polite"
+                >
+                    <Typography variant="body2" color="text.secondary">
+                        Authenticating your credentials...
+                    </Typography>
+                </Box>
+            )}
         </Box>
     )
 }

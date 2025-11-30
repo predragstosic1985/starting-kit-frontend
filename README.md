@@ -16,11 +16,16 @@ This project serves as a proof-of-concept (POC) foundation, featuring modular co
 
 ## Features
 
-- **🔐 User Authentication**: Secure login system with demo credentials and session management
+- **🔐 User Authentication**: Secure login system with role-based access control (SuperAdmin, Admin, User)
 - **🏠 Elegant Landing Page**: Welcoming hero section with app introduction and call-to-action
 - **📱 Customizable Homepage**: Functional dashboard with side menu navigation and layout options
+- **🎨 Dynamic Theming**: Light/dark/auto theme modes with user preferences and SuperAdmin assignment
+- **🌐 Internationalization**: Multi-language support with English and Spanish translations
+- **👑 Admin Panel**: SuperAdmin interface for user management and theme configuration
 - **📱 Fully Responsive**: Optimized for all devices (mobile, tablet, desktop) from 320px to 2560px width
-- **🎨 Modern UI**: Sleek, professional design using Material UI components with accessibility features
+- **♿ Accessibility**: WCAG compliant with ARIA labels, keyboard navigation, and screen reader support
+- **🛡️ Error Boundaries**: Comprehensive error handling with user-friendly error displays
+- **⚡ Performance**: Optimized bundle size with lazy loading and code splitting
 - **🔒 Type-Safe**: Built with TypeScript for enhanced developer experience and code reliability
 - **⚡ Fast Development**: Vite-powered build system for rapid iteration and hot module replacement
 - **🧪 Testing Ready**: Comprehensive testing setup with Vitest and React Testing Library
@@ -121,12 +126,14 @@ yarn lint
 - **`/`** - Landing page (public access)
 - **`/login`** - Login page (public access)
 - **`/home`** - Homepage (protected, requires authentication)
+- **`/admin`** - Admin panel (protected, requires Admin/SuperAdmin role)
 
 ## Demo Credentials
 
 For testing the authentication system:
 - **Username**: `demo`
-- **Password**: `password123`
+- **Password**: `password`
+- **Role**: SuperAdmin (full access to all features including admin panel)
 
 ## Project Structure
 

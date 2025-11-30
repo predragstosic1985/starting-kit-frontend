@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react'
 interface User {
     id: string
     username: string
+    role: 'SuperAdmin' | 'Admin' | 'User'
     isLoggedIn: boolean
 }
 
@@ -36,6 +37,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             const demoUser: User = {
                 id: '1',
                 username: 'demo',
+                role: 'SuperAdmin', // Demo user as SuperAdmin
                 isLoggedIn: true,
             }
             setUser(demoUser)
