@@ -11,14 +11,14 @@ Implement a modern, responsive frontend application with user authentication, la
 ## Technical Context
 
 **Language/Version**: TypeScript latest stable
-**Primary Dependencies**: React 19+, Material UI, optional SCSS and Tailwind
-**Storage**: Browser localStorage/sessionStorage for user session (no backend specified)
+**Primary Dependencies**: React 19+, Material UI, react-i18next for i18n, optional SCSS and Tailwind
+**Storage**: Browser localStorage/sessionStorage for user session and preferences (no backend specified)
 **Testing**: RTL (React Testing Library) and Vitest for unit tests
 **Target Platform**: Web browsers, designed for easy adaptation to Android/iOS apps
-**Project Type**: Web application (frontend)
+**Project Type**: Multi-tenant web application with role-based access control
 **Performance Goals**: Homepage loads in under 2 seconds
-**Constraints**: Fully responsive and mobile-ready across all devices
-**Scale/Scope**: Single-page application with authentication and navigation features
+**Constraints**: Fully responsive, internationalized, and theme-customizable across all devices
+**Scale/Scope**: Single-page application with authentication, theming, i18n, and admin configuration features
 
 ## Constitution Check
 
@@ -32,6 +32,8 @@ Implement a modern, responsive frontend application with user authentication, la
 - All components must be fully responsive and mobile-ready
 - Design must be modern, sleek, and visually appealing
 - Components must be modular and reusable for POC purposes
+- Code must follow TypeScript best practices and React hooks patterns
+- All implementations must prioritize performance, accessibility, and cross-browser compatibility
 
 ## Project Structure
 

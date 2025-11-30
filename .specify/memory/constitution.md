@@ -1,11 +1,3 @@
-<!-- Sync Impact Report
-Version change: none → 1.0.0
-List of modified principles: N/A (new constitution)
-Added sections: Core Principles (5), Technology Constraints, Development Standards, Governance
-Removed sections: N/A
-Templates requiring updates: none (templates are generic placeholders)
-Follow-up TODOs: none
--->
 # Starting Kit Frontend Constitution
 
 ## Core Principles

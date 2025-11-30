@@ -128,6 +128,85 @@ description: "Task list template for feature implementation"
 
 ---
 
+## Phase 4: User Story 4 - Theme Management (Priority: P2)
+
+**Goal**: Implement light/dark theme switching with user preferences and SuperAdmin configuration.
+
+**Independent Test**: Can be tested by toggling themes and verifying persistence across sessions.
+
+### Tests for User Story 4
+
+- [ ] T025 [P] [US4] Unit test for ThemeContext theme switching functionality in src/tests/unit/ThemeContext.test.tsx
+- [ ] T026 [P] [US4] Unit test for ThemeToggle component in src/tests/unit/ThemeToggle.test.tsx
+
+### Implementation for User Story 4
+
+- [ ] T027 [P] [US4] Install and configure react-i18next for internationalization in src/i18n/index.ts
+- [ ] T028 [P] [US4] Create theme context and provider for light/dark mode in src/contexts/ThemeContext.tsx
+- [ ] T029 [P] [US4] Create theme toggle component in src/components/ThemeToggle.tsx
+- [ ] T030 [US4] Implement theme persistence in localStorage
+- [ ] T031 [US4] Update Material UI theme provider to support dynamic themes
+- [ ] T032 [US4] Add theme preference to user profile and settings
+- [ ] T033 [US4] Style theme toggle for responsive design
+
+**Checkpoint**: Theme switching should work across all components
+
+---
+
+## Phase 5: User Story 5 - Internationalization (Priority: P2)
+
+**Goal**: Add multi-language support with translation management.
+
+**Independent Test**: Can be tested by switching languages and verifying all text updates.
+
+### Tests for User Story 5
+
+- [ ] T034 [P] [US5] Unit test for i18n initialization and language switching in src/tests/unit/i18n.test.tsx
+- [ ] T035 [P] [US5] Unit test for LanguageSelector component in src/tests/unit/LanguageSelector.test.tsx
+
+### Implementation for User Story 5
+
+- [ ] T036 [P] [US5] Install and configure react-i18next for internationalization in src/i18n/index.ts
+- [ ] T037 [P] [US5] Create translation files for English and at least one other language in src/i18n/locales/
+- [ ] T038 [P] [US5] Create language selector component in src/components/LanguageSelector.tsx
+- [ ] T039 [US5] Implement language persistence in localStorage
+- [ ] T040 [US5] Replace hardcoded strings with i18n keys across all components
+- [ ] T041 [US5] Add language preference to user profile
+- [ ] T042 [US5] Style language selector for responsive design
+
+**Checkpoint**: All user-facing text should be translatable
+
+---
+
+## Phase 6: User Story 6 - Admin Configuration (Priority: P1)
+
+**Goal**: Build SuperAdmin interface for theme configuration and user management.
+
+**Independent Test**: Can be tested by SuperAdmin accessing admin panel and configuring settings.
+
+### Tests for User Story 6
+
+- [ ] T043 [P] [US6] Unit test for role-based access control in src/tests/unit/RoleGuard.test.tsx
+- [ ] T044 [P] [US6] Unit test for AdminPanel component in src/tests/unit/AdminPanel.test.tsx
+- [ ] T045 [P] [US6] Unit test for UserManagement component in src/tests/unit/UserManagement.test.tsx
+
+### Implementation for User Story 6
+
+- [ ] T046 [P] [US6] Update AuthContext to include user roles (SuperAdmin, Admin, User)
+- [ ] T047 [P] [US6] Create role-based route guard component in src/components/RoleGuard.tsx
+- [ ] T048 [P] [US6] Create admin panel page in src/pages/AdminPanel.tsx
+- [ ] T049 [P] [US6] Create user management component in src/components/UserManagement.tsx
+- [ ] T050 [US6] Implement theme assignment functionality for SuperAdmin
+- [ ] T051 [US6] Add admin navigation items to side menu (role-based visibility)
+- [ ] T052 [US6] Create theme configuration interface in admin panel
+- [ ] T053 [US6] Implement user role management for SuperAdmin
+- [ ] T054 [US6] Add admin routes to React Router with role protection
+- [ ] T055 [US6] Style admin panel for responsive design
+
+**Checkpoint**: SuperAdmin should be able to configure themes and manage users
+
+---
+
 ## Phase N: Polish & Cross-Cutting Concerns
 
 **Purpose**: Improvements that affect multiple user stories
@@ -150,7 +229,7 @@ description: "Task list template for feature implementation"
 
 - **Setup (Phase 1)**: No dependencies - can start immediately
 - **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
-- **User Stories (Phase 3+)**: All depend on Foundational phase completion
+- **User Stories (Phase 3-6)**: All depend on Foundational phase completion
   - User stories can then proceed in parallel (if staffed)
   - Or sequentially in priority order (P1 → P2 → P3)
 - **Polish (Final Phase)**: Depends on all desired user stories being complete
@@ -160,6 +239,9 @@ description: "Task list template for feature implementation"
 - **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
 - **User Story 2 (P2)**: Can start after Foundational (Phase 2) - No dependencies on other stories
 - **User Story 3 (P2)**: Can start after Foundational (Phase 2) - No dependencies on other stories
+- **User Story 4 (P2)**: Can start after Foundational (Phase 2) - No dependencies on other stories
+- **User Story 5 (P2)**: Can start after Foundational (Phase 2) - No dependencies on other stories
+- **User Story 6 (P1)**: Can start after Foundational (Phase 2) - Depends on User Stories 4 & 5 for theme/language features
 
 ### Within Each User Story
 
@@ -175,6 +257,8 @@ description: "Task list template for feature implementation"
 - Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
 - All tests for a user story marked [P] can run in parallel
 - Components within a story marked [P] can run in parallel
+- Theme and i18n setup can be done in parallel with other foundational work
+- Admin features can be developed in parallel with theme/i18n once basic theming is available
 - Different user stories can be worked on in parallel by different team members
 
 ---
@@ -209,7 +293,9 @@ Task: "Create login form with Material UI components in src/components/LoginForm
 2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
 3. Add User Story 2 → Test independently → Deploy/Demo
 4. Add User Story 3 → Test independently → Deploy/Demo
-5. Each story adds value without breaking previous stories
+5. Add User Stories 4 & 5 (Themes & i18n) → Test independently → Deploy/Demo
+6. Add User Story 6 (Admin) → Test independently → Deploy/Demo
+7. Each story adds value without breaking previous stories
 
 ### Parallel Team Strategy
 
@@ -217,10 +303,12 @@ With multiple developers:
 
 1. Team completes Setup + Foundational together
 2. Once Foundational is done:
-   - Developer A: User Story 1
-   - Developer B: User Story 2
-   - Developer C: User Story 3
+   - Developer A: User Story 1 (Login)
+   - Developer B: User Stories 2 & 3 (Landing & Homepage)
+   - Developer C: User Stories 4 & 5 (Themes & i18n)
+   - Developer D: User Story 6 (Admin features)
 3. Stories complete and integrate independently
+4. Theme and i18n work can support admin features
 
 ---
 
@@ -229,7 +317,11 @@ With multiple developers:
 - [P] tasks = different files, no dependencies
 - [Story] label maps task to specific user story for traceability
 - Each user story should be independently completable and testable
+- Theme and i18n features are foundational for admin functionality
+- Role-based features require authentication context updates
 - Verify tests fail before implementing
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+- All new text must use i18n keys, no hardcoded strings
+- Theme assignments take precedence over user preferences for SuperAdmin control

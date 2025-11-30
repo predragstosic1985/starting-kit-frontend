@@ -55,6 +55,58 @@ As a logged-in user, I want a functional homepage with side menu and customizabl
 
 ---
 
+### User Story 4 - Theme Management (Priority: P2)
+
+As a user, I want to switch between light and dark themes and have theme preferences respected.
+
+**Why this priority**: Theme customization enhances user experience and accessibility.
+
+**Independent Test**: This can be fully tested by toggling theme modes and verifying visual changes.
+
+**Acceptance Scenarios**:
+
+1. **Given** I am on any page, **When** I toggle theme mode, **Then** the entire application switches between light and dark themes.
+2. **Given** I have a theme preference set, **When** I log in, **Then** my preferred theme is applied.
+3. **Given** I am SuperAdmin, **When** I configure a theme for another user, **Then** that user sees the assigned theme on login.
+4. **Given** I am on mobile device, **When** I change theme, **Then** all elements adapt properly to the new theme.
+
+---
+
+### User Story 5 - Internationalization (Priority: P2)
+
+As a user, I want the application to support multiple languages for better accessibility.
+
+**Why this priority**: Multi-language support expands the application's reach and usability.
+
+**Independent Test**: This can be fully tested by switching languages and verifying all text changes.
+
+**Acceptance Scenarios**:
+
+1. **Given** I am on any page, **When** I select a different language, **Then** all user-facing text changes to the selected language.
+2. **Given** I have a language preference, **When** I log in, **Then** the application displays in my preferred language.
+3. **Given** text is missing for a language, **When** I view the page, **Then** fallback text in the default language is shown.
+4. **Given** I am on mobile device, **When** I change language, **Then** all layouts remain properly formatted.
+
+---
+
+### User Story 6 - Admin Configuration (Priority: P1)
+
+As a SuperAdmin, I want to configure themes and UI settings for the application and assign them to users.
+
+**Why this priority**: Administrative control is essential for managing user experience at scale.
+
+**Independent Test**: This can be fully tested by accessing admin panels and verifying configuration changes.
+
+**Acceptance Scenarios**:
+
+1. **Given** I am SuperAdmin, **When** I access the admin panel, **Then** I can configure global themes and UI settings.
+2. **Given** I am SuperAdmin, **When** I assign a theme to a user, **Then** that user sees the assigned theme regardless of their preference.
+3. **Given** I am Admin, **When** I access admin features, **Then** I have limited configuration rights compared to SuperAdmin.
+4. **Given** I am regular User, **When** I try to access admin features, **Then** I am denied access.
+5. **Given** I am SuperAdmin on mobile, **When** I configure settings, **Then** the interface is fully usable.
+
+---
+
 ## Clarifications
 
 ### Session 2025-11-30
@@ -81,13 +133,19 @@ As a logged-in user, I want a functional homepage with side menu and customizabl
 - **FR-004**: System MUST provide a homepage accessible only to authenticated users.
 - **FR-005**: System MUST include a side menu on the homepage for navigation.
 - **FR-006**: System MUST allow customization of the main layout on the homepage.
-- **FR-007**: System MUST be fully responsive and work on all devices including mobile.
-- **FR-008**: System MUST have an elegant, sleek design that stands out.
-- **FR-009**: System MUST be adaptable for Android and iOS app-like experience in browsers.
+- **FR-007**: System MUST support light and dark theme modes with user preferences.
+- **FR-008**: System MUST provide internationalization (i18n) support for multiple languages.
+- **FR-009**: System MUST implement role-based access control (SuperAdmin, Admin, User).
+- **FR-010**: System MUST allow SuperAdmin to configure global themes and assign them to users.
+- **FR-011**: System MUST be fully responsive and work on all devices including mobile.
+- **FR-012**: System MUST have an elegant, sleek design that stands out.
+- **FR-013**: System MUST be adaptable for Android and iOS app-like experience in browsers.
 
 ### Key Entities *(include if feature involves data)*
 
-- **User**: Represents authenticated users with attributes like username and password for login purposes.
+- **User**: Represents authenticated users with role-based access control, including username, password, role (SuperAdmin/Admin/User), and theme preferences.
+- **Theme**: Represents configurable theme settings including light/dark mode configurations and custom styling options.
+- **Language**: Represents supported languages with translation keys and locale settings.
 
 ## Success Criteria *(mandatory)*
 
@@ -95,6 +153,11 @@ As a logged-in user, I want a functional homepage with side menu and customizabl
 
 - **SC-001**: Users can complete the login process in under 30 seconds on mobile devices.
 - **SC-002**: The application homepage loads within 2 seconds after login.
-- **SC-003**: 95% of users rate the design as elegant and sleek in user testing.
-- **SC-004**: Application functions correctly on Android and iOS browsers without layout issues.
-- **SC-005**: All pages maintain usability and visual appeal across device sizes from 320px to 2560px width.
+- **SC-003**: Theme switching occurs instantly without page reload.
+- **SC-004**: Language switching updates all text within 1 second.
+- **SC-005**: SuperAdmin configurations are applied immediately to affected users.
+- **SC-006**: 95% of users rate the design as elegant and sleek in user testing.
+- **SC-007**: Application functions correctly on Android and iOS browsers without layout issues.
+- **SC-008**: All pages maintain usability and visual appeal across device sizes from 320px to 2560px width.
+- **SC-009**: Role-based access control prevents unauthorized feature access.
+- **SC-010**: i18n coverage reaches 100% for all user-facing strings.
