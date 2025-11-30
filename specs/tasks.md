@@ -136,16 +136,16 @@ description: "Task list template for feature implementation"
 
 ### Tests for User Story 4
 
-- [ ] T025 [P] [US4] Unit test for ThemeContext theme switching functionality in src/tests/unit/ThemeContext.test.tsx
-- [ ] T026 [P] [US4] Unit test for ThemeToggle component in src/tests/unit/ThemeToggle.test.tsx
+- [x] T025 [P] [US4] Unit test for ThemeContext theme switching functionality in src/tests/unit/ThemeContext.test.tsx
+- [x] T026 [P] [US4] Unit test for ThemeToggle component in src/tests/unit/ThemeToggle.test.tsx
 
 ### Implementation for User Story 4
 
-- [ ] T027 [P] [US4] Install and configure react-i18next for internationalization in src/i18n/index.ts
-- [ ] T028 [P] [US4] Create theme context and provider for light/dark mode in src/contexts/ThemeContext.tsx
-- [ ] T029 [P] [US4] Create theme toggle component in src/components/ThemeToggle.tsx
-- [ ] T030 [US4] Implement theme persistence in localStorage
-- [ ] T031 [US4] Update Material UI theme provider to support dynamic themes
+- [x] T027 [P] [US4] Install and configure react-i18next for internationalization in src/i18n/index.ts
+- [x] T028 [P] [US4] Create theme context and provider for light/dark mode in src/contexts/ThemeContext.tsx
+- [x] T029 [P] [US4] Create theme toggle component in src/components/ThemeToggle.tsx
+- [x] T030 [US4] Implement theme persistence in localStorage
+- [x] T031 [US4] Update Material UI theme provider to support dynamic themes
 - [ ] T032 [US4] Add theme preference to user profile and settings
 - [ ] T033 [US4] Style theme toggle for responsive design
 

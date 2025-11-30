@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { AuthProvider, useAuth } from '../../contexts/AuthContext'
-import { vi, describe, it, expect } from 'vitest'
+import { vi, describe, it, expect, beforeEach } from 'vitest'
 
 // Mock localStorage
 const localStorageMock = {
@@ -10,7 +10,8 @@ const localStorageMock = {
     clear: vi.fn(),
 }
 Object.defineProperty(window, 'localStorage', {
-    value: localStorageMock
+    value: localStorageMock,
+    writable: true,
 })
 
 // Test component to access context
@@ -18,13 +19,11 @@ const TestComponent = () => {
     const { user, login, logout, isAuthenticated } = useAuth()
 
     const handleLogin = async () => {
-        const result = await login('demo', 'password')
-        console.log('Login result:', result)
+        await login('demo', 'password')
     }
 
     const handleInvalidLogin = async () => {
-        const result = await login('invalid', 'invalid')
-        console.log('Invalid login result:', result)
+        await login('invalid', 'invalid')
     }
 
     return (
