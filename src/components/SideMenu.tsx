@@ -35,7 +35,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose }) => {
 
     const menuItems = [
         { text: t('nav.home'), icon: <Home />, path: '/home' },
-        { text: t('nav.profile'), icon: <Person />, path: '/profile' },
+        { text: t('nav.profiles'), icon: <Person />, path: '/profiles' },
         { text: t('nav.settings'), icon: <Settings />, path: '/settings' },
     ]
 

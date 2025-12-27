@@ -9,6 +9,7 @@ const Landing = lazy(() => import('./pages/Landing'))
 const Login = lazy(() => import('./pages/Login'))
 const Homepage = lazy(() => import('./pages/Homepage'))
 const AdminPanel = lazy(() => import('./pages/AdminPanel'))
+const Profiles = lazy(() => import('./pages/Profiles'))
 
 const App: React.FC = () => {
     return (
@@ -30,6 +31,14 @@ const App: React.FC = () => {
                         element={
                             <ProtectedRoute>
                                 <AdminPanel />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/profiles"
+                        element={
+                            <ProtectedRoute>
+                                <Profiles />
                             </ProtectedRoute>
                         }
                     />
