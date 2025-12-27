@@ -6,6 +6,8 @@ import { AuthProvider } from './contexts/AuthContext.tsx'
 import { ThemeProviderWrapper } from './contexts/ThemeContext.tsx'
 import ErrorBoundary from './components/ErrorBoundary.tsx'
 import './i18n/index.ts'
+import keycloak from './config/keycloak'
+import { ReactKeycloakProvider } from '@react-keycloak/web'
 
 // Register service worker for PWA
 if ('serviceWorker' in navigator) {
@@ -24,11 +26,21 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ErrorBoundary>
             <BrowserRouter>
-                <ThemeProviderWrapper>
-                    <AuthProvider>
-                        <App />
-                    </AuthProvider>
-                </ThemeProviderWrapper>
+                <ReactKeycloakProvider
+                    authClient={keycloak}
+                    initOptions={{
+                        onLoad: 'check-sso',
+                        silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+                        pkceMethod: 'S256',
+                        redirectUri: window.location.origin + '/home'
+                    }}
+                >
+                    <ThemeProviderWrapper>
+                        <AuthProvider>
+                            <App />
+                        </AuthProvider>
+                    </ThemeProviderWrapper>
+                </ReactKeycloakProvider>
             </BrowserRouter>
         </ErrorBoundary>
     </React.StrictMode>,

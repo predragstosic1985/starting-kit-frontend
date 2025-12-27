@@ -9,17 +9,17 @@
 
 ### User Story 1 - User Login (Priority: P1)
 
-As a user, I want to securely log in to access the application.
+As a user, I want to securely log in to access the application using Keycloak authentication.
 
 **Why this priority**: Login is essential for user authentication and access control, forming the foundation of the application.
 
-**Independent Test**: This can be fully tested by attempting login with various credential combinations and verifying access to protected areas.
+**Independent Test**: This can be fully tested by attempting login with various credential combinations via Keycloak and verifying access to protected areas.
 
 **Acceptance Scenarios**:
 
-1. **Given** I have valid credentials, **When** I enter username and password and submit, **Then** I am authenticated and redirected to the homepage.
-2. **Given** I have invalid credentials, **When** I submit the form, **Then** I see a clear error message and remain on the login page.
-3. **Given** I am on mobile device, **When** I access the login page, **Then** the form is fully responsive and usable.
+1. **Given** I have valid Keycloak credentials, **When** I initiate login, **Then** I am redirected to Keycloak login page, authenticated, and redirected back to the homepage.
+2. **Given** I have invalid credentials, **When** I attempt login via Keycloak, **Then** I see a clear error message from Keycloak and remain on the login page.
+3. **Given** I am on mobile device, **When** I access the login page, **Then** the Keycloak login flow is fully responsive and usable.
 
 ---
 
@@ -111,8 +111,8 @@ As a SuperAdmin, I want to configure themes and UI settings for the application 
 
 ### Session 2025-11-30
 
-- Q: What are the demo credentials for login? → A: Username "demo", password "password123"
-- Q: How is logout handled? → A: Logout button in side menu that clears session and redirects to landing
+- Q: What are the demo credentials for login? → A: Keycloak users: superadmin/password123 (SuperAdmin), admin/password123 (Admin), user/password123 (User)
+- Q: How is logout handled? → A: Logout button in side menu that logs out from Keycloak and redirects to landing
 - Q: What content should be on the landing page? → A: Hero section with app title "Starting Kit Frontend", description of purpose, and prominent login button
 - Q: What menu items should be in the side menu? → A: Home, Profile, Settings, Logout
 - Q: What layout customization options? → A: Theme switch (light/dark mode), layout density (compact/spacious)

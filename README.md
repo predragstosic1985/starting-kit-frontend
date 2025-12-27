@@ -16,7 +16,7 @@ This project serves as a proof-of-concept (POC) foundation, featuring modular co
 
 ## Features
 
-- **🔐 User Authentication**: Secure login system with role-based access control (SuperAdmin, Admin, User)
+- **🔐 Keycloak Authentication**: Secure authentication with Keycloak, JWT tokens, and role-based access control (SuperAdmin, Admin, User)
 - **🏠 Elegant Landing Page**: Welcoming hero section with app introduction and call-to-action
 - **📱 Customizable Homepage**: Functional dashboard with side menu navigation and layout options
 - **🎨 Dynamic Theming**: Light/dark/auto theme modes with user preferences and SuperAdmin assignment
@@ -51,8 +51,8 @@ This project serves as a proof-of-concept (POC) foundation, featuring modular co
 - **Routing**: React Router DOM 6+ for client-side navigation
 
 ### State Management
-- **Authentication**: React Context API with browser storage persistence
-- **Session Storage**: localStorage/sessionStorage for demo authentication
+- **Authentication**: Keycloak integration with JWT tokens and React Context API
+- **Session Storage**: localStorage/sessionStorage for user preferences
 
 ## Prerequisites
 
@@ -130,10 +130,12 @@ yarn lint
 
 ## Demo Credentials
 
-For testing the authentication system:
-- **Username**: `demo`
-- **Password**: `password`
-- **Role**: SuperAdmin (full access to all features including admin panel)
+For testing the authentication system, create users in Keycloak with these details:
+- **Username**: `superadmin`, **Password**: `password123`, **Role**: SuperAdmin (full access)
+- **Username**: `admin`, **Password**: `password123`, **Role**: Admin (limited access)
+- **Username**: `user`, **Password**: `password123`, **Role**: User (basic access)
+
+See `docs/auth-setup.md` for Keycloak setup instructions.
 
 ## Project Structure
 
@@ -193,7 +195,7 @@ The Starting Kit Frontend follows a modern React application architecture:
 
 ### Key Architectural Decisions
 
-- **Frontend-Only Authentication**: Simulated authentication for POC purposes, designed for easy backend integration
+- **Keycloak Authentication**: Centralized identity management with JWT tokens for secure API communication
 - **Modular Components**: All components built for reusability and easy customization
 - **TypeScript First**: Full type coverage for better developer experience and runtime safety
 - **Material UI Foundation**: Consistent design system with accessibility and responsive features
@@ -201,9 +203,10 @@ The Starting Kit Frontend follows a modern React application architecture:
 
 ### Data Flow
 
-1. **Authentication Flow**: Login → Context Update → Session Storage → Protected Route Access
-2. **Navigation Flow**: Router → Protected Route Check → Auth Context → Component Render
-3. **Responsive Flow**: Breakpoint Detection → Style Adaptation → Component Re-render
+1. **Authentication Flow**: Login → Keycloak → JWT Token → Context Update → Protected Route Access
+2. **Navigation Flow**: Router → Protected Route Check → Keycloak Auth → Component Render
+3. **API Communication**: JWT Token → Backend Validation → Authorized API Access
+4. **Responsive Flow**: Breakpoint Detection → Style Adaptation → Component Re-render
 
 ## Development Guidelines
 
@@ -258,13 +261,13 @@ This frontend application is designed for easy adaptation to mobile apps:
 
 ## Future Enhancements
 
-- Backend API integration for production authentication
 - Advanced theming and customization options
 - Progressive Web App (PWA) features
-- Internationalization (i18n) support
+- Enhanced internationalization (i18n) support
 - Advanced state management (Redux Toolkit, Zustand)
 - Component library documentation
 - End-to-end testing with Playwright
+- Keycloak advanced features (social login, MFA)
 
 ## License
 

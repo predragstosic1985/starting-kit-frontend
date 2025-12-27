@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Button, Box, Alert, Typography } from '@mui/material'
+import { Button, Box, Alert, Typography } from '@mui/material'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,11 +8,9 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const { login } = useAuth()
+    const { login, isAuthenticated } = useAuth()
     const navigate = useNavigate()
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -20,63 +18,29 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
         setError('')
         setLoading(true)
 
-        // Basic validation
-        if (!username.trim()) {
-            setError('Username is required')
+        try {
+            await login()
+            // After successful login, Keycloak will redirect back to the app
+            // The AuthContext will handle the user state update
+            if (isAuthenticated) {
+                onSuccess ? onSuccess() : navigate('/home')
+            }
+        } catch (error) {
+            console.error('Keycloak login error:', error)
+            setError('Failed to authenticate with Keycloak')
             setLoading(false)
-            return
-        }
-        if (!password.trim()) {
-            setError('Password is required')
-            setLoading(false)
-            return
-        }
-        if (password.length < 8) {
-            setError('Password must be at least 8 characters')
-            setLoading(false)
-            return
-        }
-
-        const success = await login(username, password)
-        setLoading(false)
-        if (success) {
-            onSuccess ? onSuccess() : navigate('/home')
-        } else {
-            setError('Invalid credentials')
         }
     }
 
     return (
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, width: '100%', maxWidth: 400 }}>
             {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                error={!!error && !username.trim()}
-                helperText={error && !username.trim() ? 'Username is required' : ''}
-            />
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                error={!!error && password.length < 8}
-                helperText={error && password.length < 8 ? 'Password must be at least 8 characters' : ''}
-            />
+            <Typography variant="body1" paragraph>
+                Click the button below to login using Keycloak authentication.
+            </Typography>
+            <Typography variant="body2" color="text.secondary" paragraph>
+                You will be redirected to the Keycloak login page.
+            </Typography>
             <Button
                 type="submit"
                 fullWidth
@@ -104,10 +68,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
                             }}
                             aria-hidden="true"
                         />
-                        Signing In...
+                        Redirecting to Keycloak...
                     </>
                 ) : (
-                    'Sign In'
+                    'Login with Keycloak'
                 )}
             </Button>
             {loading && (
@@ -118,7 +82,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
                     aria-live="polite"
                 >
                     <Typography variant="body2" color="text.secondary">
-                        Authenticating your credentials...
+                        Redirecting to Keycloak authentication...
                     </Typography>
                 </Box>
             )}

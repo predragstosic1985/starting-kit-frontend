@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Silent Check SSO</title>
+    <script>
+        // This page is used by Keycloak for silent authentication checks
+        // It should be as minimal as possible to avoid any rendering issues
+        window.onload = function () {
+            // Notify parent window that silent check is complete
+            if (window.opener) {
+                window.opener.postMessage('keycloak-silent-check-complete', window.location.origin);
+            }
+            // Close this window after a brief delay
+            setTimeout(function () {
+                window.close();
+            }, 100);
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Empty body for silent check -->
+</body>
+
+</html>

@@ -7,7 +7,12 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated, initialized } = useAuth()
+
+    // If Keycloak is still initializing, show loading state
+    if (!initialized) {
+        return <div>Loading authentication...</div>
+    }
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />

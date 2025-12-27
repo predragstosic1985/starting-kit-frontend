@@ -202,6 +202,29 @@ description: "Task list template for feature implementation"
 
 ---
 
+## Phase 7: Keycloak Authentication Integration (Priority: P1)
+
+**Goal**: Replace demo authentication with Keycloak-based authentication using JWT tokens.
+
+**Independent Test**: Can be tested by logging in via Keycloak and verifying token-based API communication.
+
+### Implementation for Keycloak Integration
+
+- [ ] T111 Install Keycloak JS adapter and React integration in package.json
+- [ ] T112 Create Keycloak configuration file in src/keycloak.ts
+- [ ] T113 Update AuthContext to use Keycloak authentication in src/contexts/AuthContext.tsx
+- [ ] T114 Wrap App with ReactKeycloakProvider in src/main.tsx
+- [ ] T115 Update ProtectedRoute component for Keycloak auth checks in src/components/ProtectedRoute.tsx
+- [ ] T116 Simplify or remove custom login form in src/pages/Login.tsx
+- [ ] T117 Create silent SSO check file in public/silent-check-sso.html
+- [ ] T118 Implement API token interceptor for backend communication
+- [ ] T119 Update role extraction from Keycloak tokens
+- [ ] T120 Test Keycloak login flow and token handling
+
+**Checkpoint**: Users can authenticate via Keycloak and access protected resources with JWT tokens
+
+---
+
 ## Phase N: Polish & Cross-Cutting Concerns
 
 **Purpose**: Improvements that affect multiple user stories
@@ -245,7 +268,8 @@ description: "Task list template for feature implementation"
 - **User Stories (Phase 3-6)**: All depend on Foundational phase completion
   - User stories can then proceed in parallel (if staffed)
   - Or sequentially in priority order (P1 → P2 → P3)
-- **Polish (Final Phase)**: Depends on all desired user stories being complete
+- **Keycloak Integration (Phase 7)**: Depends on Foundational phase and User Story 1 completion
+- **Polish (Final Phase)**: Depends on all desired user stories and Keycloak integration being complete
 
 ### User Story Dependencies
 
@@ -348,6 +372,7 @@ With multiple developers:
 - **Documentation**: README.md updated with comprehensive project information
 
 ### Remaining Tasks (Marked [ ])
+- **Keycloak Integration**: Replace demo auth with Keycloak JWT authentication
 - **Performance Optimization**: Bundle size optimization, lazy loading, React.memo
 - **PWA Features**: Service worker, manifest, offline capability
 - **Testing**: E2E tests, comprehensive component documentation
