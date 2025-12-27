@@ -12,6 +12,7 @@ const resources = {
             // Navigation
             "nav.home": "Home",
             "nav.profile": "Profile",
+            "nav.profiles": "Profiles",
             "nav.settings": "Settings",
             "nav.logout": "Logout",
 
@@ -35,40 +36,65 @@ const resources = {
             "settings.title": "Settings",
             "settings.theme": "Theme",
             "settings.language": "Language",
+
+            // Profiles
+            "profiles.title": "User Profiles",
+            "profiles.loading": "Loading profiles...",
+            "profiles.error": "Failed to load profiles",
+            "profiles.noUsers": "No users found",
+            "profiles.unknownUser": "Unknown User",
+            "profiles.userId": "ID: {{id}}",
+            "profiles.email": "Email: {{email}}",
+            "profiles.role": "Role: {{role}}",
+            "profiles.firstName": "First Name: {{firstName}}",
+            "profiles.lastName": "Last Name: {{lastName}}",
         }
     },
-    es: {
+    de: {
         translation: {
             // Common
-            "app.title": "Kit de Inicio Frontend",
-            "app.description": "Una aplicación frontend moderna y responsiva",
+            "app.title": "Frontend-Starter-Kit",
+            "app.description": "Eine moderne, responsive Frontend-Anwendung",
 
             // Navigation
-            "nav.home": "Inicio",
-            "nav.profile": "Perfil",
-            "nav.settings": "Configuración",
-            "nav.logout": "Cerrar Sesión",
+            "nav.home": "Startseite",
+            "nav.profile": "Profil",
+            "nav.profiles": "Benutzerprofile",
+            "nav.settings": "Einstellungen",
+            "nav.logout": "Abmelden",
 
             // Authentication
-            "auth.login": "Iniciar Sesión",
-            "auth.username": "Usuario",
-            "auth.password": "Contraseña",
-            "auth.signIn": "Iniciar Sesión",
-            "auth.invalidCredentials": "Credenciales inválidas",
+            "auth.login": "Anmelden",
+            "auth.username": "Benutzername",
+            "auth.password": "Passwort",
+            "auth.signIn": "Anmelden",
+            "auth.invalidCredentials": "Ungültige Anmeldedaten",
 
             // Landing
-            "landing.welcome": "Bienvenido",
-            "landing.description": "Experimenta nuestra aplicación moderna y responsiva",
+            "landing.welcome": "Willkommen",
+            "landing.description": "Erleben Sie unsere moderne, responsive Anwendung",
 
             // Themes
-            "theme.light": "Claro",
-            "theme.dark": "Oscuro",
-            "theme.auto": "Automático",
+            "theme.light": "Hell",
+            "theme.dark": "Dunkel",
+            "theme.auto": "Automatisch",
 
             // Settings
-            "settings.title": "Configuración",
-            "settings.theme": "Tema",
-            "settings.language": "Idioma",
+            "settings.title": "Einstellungen",
+            "settings.theme": "Design",
+            "settings.language": "Sprache",
+
+            // Profiles
+            "profiles.title": "Benutzerprofile",
+            "profiles.loading": "Lade Profile...",
+            "profiles.error": "Fehler beim Laden der Profile",
+            "profiles.noUsers": "Keine Benutzer gefunden",
+            "profiles.unknownUser": "Unbekannter Benutzer",
+            "profiles.userId": "ID: {{id}}",
+            "profiles.email": "E-Mail: {{email}}",
+            "profiles.role": "Rolle: {{role}}",
+            "profiles.firstName": "Vorname: {{firstName}}",
+            "profiles.lastName": "Nachname: {{lastName}}",
         }
     }
 }

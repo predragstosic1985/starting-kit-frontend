@@ -3,8 +3,10 @@ import { useAuth } from '../contexts/AuthContext'
 import { fetchUsers } from '../services/api'
 import { Typography, CircularProgress, Alert, Card, CardContent, Grid, Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Profiles: React.FC = () => {
+    const { t } = useTranslation()
     const { keycloak, isAuthenticated } = useAuth()
     const [users, setUsers] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
@@ -25,14 +27,14 @@ const Profiles: React.FC = () => {
                 setUsers(fetchedUsers)
             } catch (err) {
                 console.error('Failed to load users:', err)
-                setError(err instanceof Error ? err.message : 'Failed to load users')
+                setError(err instanceof Error ? err.message : t('profiles.error'))
             } finally {
                 setLoading(false)
             }
         }
 
         loadUsers()
-    }, [keycloak, isAuthenticated, navigate])
+    }, [keycloak, isAuthenticated, navigate, t])
 
     if (!isAuthenticated) {
         return null // ProtectedRoute will handle the redirect
@@ -41,12 +43,15 @@ const Profiles: React.FC = () => {
     return (
         <Box sx={{ p: 3 }}>
             <Typography variant="h4" component="h1" gutterBottom>
-                User Profiles
+                {t('profiles.title')}
             </Typography>
 
             {loading ? (
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                     <CircularProgress />
+                    <Typography variant="body1" sx={{ ml: 2 }}>
+                        {t('profiles.loading')}
+                    </Typography>
                 </Box>
             ) : error ? (
                 <Alert severity="error" sx={{ mt: 2 }}>
@@ -56,7 +61,7 @@ const Profiles: React.FC = () => {
                 <Grid container spacing={3} sx={{ mt: 1 }}>
                     {users.length === 0 ? (
                         <Grid item xs={12}>
-                            <Alert severity="info">No users found</Alert>
+                            <Alert severity="info">{t('profiles.noUsers')}</Alert>
                         </Grid>
                     ) : (
                         users.map((user) => (
@@ -64,29 +69,29 @@ const Profiles: React.FC = () => {
                                 <Card>
                                     <CardContent>
                                         <Typography variant="h6" component="div">
-                                            {user.username || user.email || 'Unknown User'}
+                                            {user.username || user.email || t('profiles.unknownUser')}
                                         </Typography>
                                         <Typography color="text.secondary" sx={{ mb: 1 }}>
-                                            ID: {user.id}
+                                            {t('profiles.userId', { id: user.id })}
                                         </Typography>
                                         {user.email && (
                                             <Typography variant="body2">
-                                                Email: {user.email}
+                                                {t('profiles.email', { email: user.email })}
                                             </Typography>
                                         )}
                                         {user.role && (
                                             <Typography variant="body2">
-                                                Role: {user.role}
+                                                {t('profiles.role', { role: user.role })}
                                             </Typography>
                                         )}
                                         {user.firstName && (
                                             <Typography variant="body2">
-                                                First Name: {user.firstName}
+                                                {t('profiles.firstName', { firstName: user.firstName })}
                                             </Typography>
                                         )}
                                         {user.lastName && (
                                             <Typography variant="body2">
-                                                Last Name: {user.lastName}
+                                                {t('profiles.lastName', { lastName: user.lastName })}
                                             </Typography>
                                         )}
                                     </CardContent>

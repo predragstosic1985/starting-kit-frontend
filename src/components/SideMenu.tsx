@@ -60,8 +60,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose }) => {
     }
 
     const drawerContent = (
-        <Box sx={{ width: 250, height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <List sx={{ flexGrow: 1 }}>
+        <Box sx={{ width: 250, height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <List sx={{ flexGrow: 1, overflowY: 'auto', overflowX: 'hidden' }}>
                 {menuItems.map((item) => (
                     <ListItem key={item.path} disablePadding>
                         <ListItemButton onClick={() => handleMenuClick(item.path)}>
@@ -74,9 +74,9 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose }) => {
                 ))}
             </List>
             <Divider />
-            <List>
+            <List sx={{ overflow: 'hidden' }}>
                 <ListItem disablePadding>
-                    <ListItemButton onClick={handleLogout}>
+                    <ListItemButton onClick={handleLogout} sx={{ minHeight: 48 }}>
                         <ListItemIcon>
                             <Logout />
                         </ListItemIcon>
@@ -100,6 +100,15 @@ const SideMenu: React.FC<SideMenuProps> = ({ open, onClose }) => {
                     position: isMobile ? 'absolute' : 'relative',
                     width: 250,
                     boxSizing: 'border-box',
+                    overflowX: 'hidden',
+                    scrollbarWidth: 'thin',
+                    '&::-webkit-scrollbar': {
+                        width: '6px',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        backgroundColor: theme.palette.mode === 'light' ? '#ccc' : '#555',
+                        borderRadius: '3px',
+                    },
                 },
             }}
         >
